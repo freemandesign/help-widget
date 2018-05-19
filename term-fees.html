@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FM Support | Term Fees</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.fn.sortable.min.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-datepicker.min.js"></script>
+        <script src="js/bootstrap-timepicker.min.js"></script>
+        <script src="js/bootstrap-select.min.js"></script>
+        <script src="js/bootstrap-tagsinput.min.js"></script>
+        <script src="js/bootstrap3-typeahead.min.js"></script>
+        <script src="js/bootbox.min.js"></script>
+        <script src="js/bootstrap-wysiwyg.min.js"></script>
+        <script src="js/jquery.hotkeys.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/jquery.serializejson.min.js"></script>
+        <script src="js/validator.min.js"></script>
+        <script src="js/dataTables.bootstrap.js"></script>
+        <script src="js/bootstrap-dropdownsub.js"></script>
+        <script src="js/numeric-inputs.js"></script>
+        <script src="js/fm.js?1055"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+        <link rel="stylesheet" href="css/bootstrap-timepicker.min.css">
+        <link rel="stylesheet" href="css/bootstrap-select.min.css">
+        <link rel="stylesheet" href="css/bootstrap-tagsinput.css">
+        <link rel="stylesheet" href="css/bootbox.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/dataTables.bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-dropdownsub.css">
+        <link rel="stylesheet" href="css/fm.css?1055">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="stylesheet" href="css/help-widget.css">
+        <script src="js/fm-admin.js?1055"></script>
+    </head>
+    <body class="editing">
+        <img class="visible-print-block print-logo" src="/images/fmsupport/logo.png">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <ul class="nav navbar-nav navbar-right hidden-xs" id="topbar">
+                        <li class="dropdown hidden-sm">
+                            <a href="#" data-toggle="dropdown">
+                                <i class="fa fa-plus"></i>
+                                <span class="caret" style="position:absolute;top:30px;left:25px"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href='/register'>Register Members</a>
+                                </li>
+                                <li>
+                                    <a href='/people/new'>New Person</a>
+                                </li>
+                                <li>
+                                    <a href='/attendance/new'>New Attendance</a>
+                                </li>
+                                <li>
+                                    <a href='/events/new'>New Event</a>
+                                </li>
+                                <li>
+                                    <a href='/groups/new'>New Class</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="hidden-sm">
+                            <a href="/help" data-toggle="tooltip" data-placement="bottom" title="Help">
+                                <i class="fa fa-question-circle"></i>
+                            </a>
+                        </li>
+                        <li class="hidden-sm">
+                            <a href="/settings" data-toggle="tooltip" data-placement="bottom" title="Club Settings">
+                                <i class="fa fa-cog"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logout" data-toggle="tooltip" data-placement="bottom" title="Logout">
+                                <i class="fa fa-sign-out"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-search">
+                        <input type="search" class="form-control" placeholder="Search" tabindex="1" id="navbar-search">
+                        <label for="navbar-search" class="fa fa-search navbar-toggle"></label>
+                    </div>
+                    <div class="navbar-brand visible-sm-block sidebar-toggle">
+                        <i class="fa fa-bars"></i>
+                    </div>
+                    <a class="navbar-brand navbar-home" href="/">
+                        <i class="fa fa-home"></i>
+                        <span class="hidden-xs hidden-sm club-name">FM Support</span>
+                    </a>
+                    <div class="topName">Term Fees</div>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="nav navbar-nav">
+                        <li class=' with-submenu' id='menuitem-people'>
+                            <a href='/people'>
+                                <i class='fa fa-users fa-fw'></i>
+                                People
+
+                                <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-0'>
+                                    <i class='fa fa-caret-down'></i>
+                                    <i class='fa fa-caret-right'></i>
+                                </span>
+                            </a>
+                            <ul class='nav navbar-nav submenu collapse' id='submenu-0'>
+                                <li class=' ' id='menuitem-people/membership'>
+                                    <a href='/people/membership'>
+                                        <i class='fa fa-file-text-o fa-fw'></i>
+                                        Membership Age Report
+
+                                    </a>
+                                </li>
+                                <li class=' ' id='menuitem-people/duplicates'>
+                                    <a href='/people/duplicates'>
+                                        <i class='fa fa-files-o fa-fw'></i>
+                                        Duplicate Names
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=' with-submenu' id='menuitem-groups'>
+                            <a href='/groups'>
+                                <i class='fa fa-sitemap fa-fw'></i>
+                                Classes
+
+                                <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-1'>
+                                    <i class='fa fa-caret-down'></i>
+                                    <i class='fa fa-caret-right'></i>
+                                </span>
+                            </a>
+                            <ul class='nav navbar-nav submenu collapse' id='submenu-1'>
+                                <li class=' ' id='menuitem-groups/terms'>
+                                    <a href='/groups/terms'>
+                                        <i class='fa fa-calendar fa-fw'></i>
+                                        Terms
+
+                                    </a>
+                                </li>
+                                <li class=' ' id='menuitem-groups/waitlist'>
+                                    <a href='/groups/waitlist'>
+                                        <i class='fa fa-list-ol fa-fw'></i>
+                                        Waitlist
+
+                                    </a>
+                                </li>
+                                <li class=' ' id='menuitem-groups/members'>
+                                    <a href='/groups/members'>
+                                        <i class='fa fa-file-text-o fa-fw'></i>
+                                        Members Report
+
+                                    </a>
+                                </li>
+                                <li class=' ' id='menuitem-groups/report'>
+                                    <a href='/groups/report'>
+                                        <i class='fa fa-file-text-o fa-fw'></i>
+                                        Classes Report
+
+                                    </a>
+                                </li>
+                                <li class=' ' id='menuitem-groups/retention'>
+                                    <a href='/groups/retention'>
+                                        <i class='fa fa-file-text-o fa-fw'></i>
+                                        Retention Report
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class='active with-submenu' id='menuitem-fees'>
+                            <a href='/fees'>
+                                <i class='fa fa-dollar fa-fw'></i>
+                                Fees
+
+                                <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-2'>
+                                    <i class='fa fa-caret-down'></i>
+                                    <i class='fa fa-caret-right'></i>
+                                </span>
+                            </a>
+                            <ul class='nav navbar-nav submenu collapse' id='submenu-2'>
+                                <li class=' ' id='menuitem-fees/transactions'>
+                                    <a href='/fees/transactions'>
+                                        <i class='fa fa-exchange fa-fw'></i>
+                                        Transactions
+
+                                    </a>
+                                </li>
+                                <li class='active ' id='menuitem-fees/term-fees'>
+                                    <a href='/fees/term-fees'>
+                                        <i class='fa fa-calendar fa-fw'></i>
+                                        Term Fees
+
+                                    </a>
+                                </li>
+                                <li class=' ' id='menuitem-fees/outstanding'>
+                                    <a href='/fees/outstanding'>
+                                        <i class='fa fa-file-text-o fa-fw'></i>
+                                        Outstanding Report
+
+                                    </a>
+                                </li>
+                                <li class=' ' id='menuitem-fees/overdue'>
+                                    <a href='/fees/overdue'>
+                                        <i class='fa fa-file-text-o fa-fw'></i>
+                                        Overdue Report
+
+                                    </a>
+                                </li>
+                                <li class=' ' id='menuitem-fees/nofees'>
+                                    <a href='/fees/nofees'>
+                                        <i class='fa fa-file-text-o fa-fw'></i>
+                                        Missing Fees Report
+
+                                    </a>
+                                </li>
+                                <li class=' ' id='menuitem-fees/xero-config'>
+                                    <a href='/fees/xero-config'>
+                                        <i class='fa fa-gear fa-fw'></i>
+                                        Xero Config
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=' with-submenu' id='menuitem-events'>
+                            <a href='/events'>
+                                <i class='fa fa-calendar fa-fw'></i>
+                                Events
+
+                                <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-3'>
+                                    <i class='fa fa-caret-down'></i>
+                                    <i class='fa fa-caret-right'></i>
+                                </span>
+                            </a>
+                            <ul class='nav navbar-nav submenu collapse' id='submenu-3'>
+                                <li class=' ' id='menuitem-venues'>
+                                    <a href='/venues'>
+                                        <i class='fa fa-building-o fa-fw'></i>
+                                        Venues &Bookings
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=' with-submenu' id='menuitem-attendance'>
+                            <a href='/attendance'>
+                                <i class='fa fa-check-square-o fa-fw'></i>
+                                Attendance
+
+                                <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-4'>
+                                    <i class='fa fa-caret-down'></i>
+                                    <i class='fa fa-caret-right'></i>
+                                </span>
+                            </a>
+                            <ul class='nav navbar-nav submenu collapse' id='submenu-4'>
+                                <li class=' ' id='menuitem-attendance/report'>
+                                    <a href='/attendance/report'>
+                                        <i class='fa fa-file-text-o fa-fw'></i>
+                                        Report
+
+                                    </a>
+                                </li>
+                                <li class=' ' id='menuitem-attendance/visitors'>
+                                    <a href='/attendance/visitors'>
+                                        <i class='fa fa-file-text-o fa-fw'></i>
+                                        Visitors
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=' with-submenu' id='menuitem-email'>
+                            <a href='/email'>
+                                <i class='fa fa-envelope fa-fw'></i>
+                                Mailer
+
+                                <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-5'>
+                                    <i class='fa fa-caret-down'></i>
+                                    <i class='fa fa-caret-right'></i>
+                                </span>
+                            </a>
+                            <ul class='nav navbar-nav submenu collapse' id='submenu-5'>
+                                <li class=' ' id='menuitem-email/history'>
+                                    <a href='/email/history'>
+                                        <i class='fa fa-history fa-fw'></i>
+                                        History
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=' with-submenu' id='menuitem-awards'>
+                            <a href='/awards'>
+                                <i class='fa fa-trophy fa-fw'></i>
+                                Badges
+
+                                <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-6'>
+                                    <i class='fa fa-caret-down'></i>
+                                    <i class='fa fa-caret-right'></i>
+                                </span>
+                            </a>
+                            <ul class='nav navbar-nav submenu collapse' id='submenu-6'>
+                                <li class=' ' id='menuitem-awards/groups'>
+                                    <a href='/awards/groups'>
+                                        <i class='fa fa-sitemap fa-fw'></i>
+                                        Badge Groups
+
+                                    </a>
+                                </li>
+                                <li class=' ' id='menuitem-awards/report'>
+                                    <a href='/awards/report'>
+                                        <i class='fa fa-file-text-o fa-fw'></i>
+                                        Report
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=' ' id='menuitem-reports/GSNZ'>
+                            <a href='/reports/GSNZ'>
+                                <i class='fa fa-file-text-o fa-fw'></i>
+                                GSNZ Report
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-programs'>
+                            <a href='/programs'>
+                                <i class='fa fa-rocket fa-fw'></i>
+                                Programmes
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logout">
+                                <i class="fa fa-fw fa-sign-out"></i>
+                                Logout
+
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="navbar-controls clearfix controls-offset-3 controls-search">
+            <span id="custom-buttons">
+                <button class="btn btn-info" id="discounts" value="1">Discounts</button>
+            </span>
+        </div>
+        <div class="hidden-xs sidebar">
+            <ul class="nav nav-sidebar">
+                <li class=' with-submenu' id='menuitem-people'>
+                    <a href='/people'>
+                        <i class='fa fa-users fa-fw'></i>
+                        People
+
+                        <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-0'>
+                            <i class='fa fa-caret-down'></i>
+                            <i class='fa fa-caret-right'></i>
+                        </span>
+                    </a>
+                    <ul class='nav navbar-nav submenu collapse' id='submenu-0'>
+                        <li class=' ' id='menuitem-people/membership'>
+                            <a href='/people/membership'>
+                                <i class='fa fa-file-text-o fa-fw'></i>
+                                Membership Age Report
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-people/duplicates'>
+                            <a href='/people/duplicates'>
+                                <i class='fa fa-files-o fa-fw'></i>
+                                Duplicate Names
+
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=' with-submenu' id='menuitem-groups'>
+                    <a href='/groups'>
+                        <i class='fa fa-sitemap fa-fw'></i>
+                        Classes
+
+                        <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-1'>
+                            <i class='fa fa-caret-down'></i>
+                            <i class='fa fa-caret-right'></i>
+                        </span>
+                    </a>
+                    <ul class='nav navbar-nav submenu collapse' id='submenu-1'>
+                        <li class=' ' id='menuitem-groups/terms'>
+                            <a href='/groups/terms'>
+                                <i class='fa fa-calendar fa-fw'></i>
+                                Terms
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-groups/waitlist'>
+                            <a href='/groups/waitlist'>
+                                <i class='fa fa-list-ol fa-fw'></i>
+                                Waitlist
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-groups/members'>
+                            <a href='/groups/members'>
+                                <i class='fa fa-file-text-o fa-fw'></i>
+                                Members Report
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-groups/report'>
+                            <a href='/groups/report'>
+                                <i class='fa fa-file-text-o fa-fw'></i>
+                                Classes Report
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-groups/retention'>
+                            <a href='/groups/retention'>
+                                <i class='fa fa-file-text-o fa-fw'></i>
+                                Retention Report
+
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class='active with-submenu' id='menuitem-fees'>
+                    <a href='/fees'>
+                        <i class='fa fa-dollar fa-fw'></i>
+                        Fees
+
+                        <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-2'>
+                            <i class='fa fa-caret-down'></i>
+                            <i class='fa fa-caret-right'></i>
+                        </span>
+                    </a>
+                    <ul class='nav navbar-nav submenu collapse' id='submenu-2'>
+                        <li class=' ' id='menuitem-fees/transactions'>
+                            <a href='/fees/transactions'>
+                                <i class='fa fa-exchange fa-fw'></i>
+                                Transactions
+
+                            </a>
+                        </li>
+                        <li class='active ' id='menuitem-fees/term-fees'>
+                            <a href='/fees/term-fees'>
+                                <i class='fa fa-calendar fa-fw'></i>
+                                Term Fees
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-fees/outstanding'>
+                            <a href='/fees/outstanding'>
+                                <i class='fa fa-file-text-o fa-fw'></i>
+                                Outstanding Report
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-fees/overdue'>
+                            <a href='/fees/overdue'>
+                                <i class='fa fa-file-text-o fa-fw'></i>
+                                Overdue Report
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-fees/nofees'>
+                            <a href='/fees/nofees'>
+                                <i class='fa fa-file-text-o fa-fw'></i>
+                                Missing Fees Report
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-fees/xero-config'>
+                            <a href='/fees/xero-config'>
+                                <i class='fa fa-gear fa-fw'></i>
+                                Xero Config
+
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=' with-submenu' id='menuitem-events'>
+                    <a href='/events'>
+                        <i class='fa fa-calendar fa-fw'></i>
+                        Events
+
+                        <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-3'>
+                            <i class='fa fa-caret-down'></i>
+                            <i class='fa fa-caret-right'></i>
+                        </span>
+                    </a>
+                    <ul class='nav navbar-nav submenu collapse' id='submenu-3'>
+                        <li class=' ' id='menuitem-venues'>
+                            <a href='/venues'>
+                                <i class='fa fa-building-o fa-fw'></i>
+                                Venues &Bookings
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=' with-submenu' id='menuitem-attendance'>
+                    <a href='/attendance'>
+                        <i class='fa fa-check-square-o fa-fw'></i>
+                        Attendance
+
+                        <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-4'>
+                            <i class='fa fa-caret-down'></i>
+                            <i class='fa fa-caret-right'></i>
+                        </span>
+                    </a>
+                    <ul class='nav navbar-nav submenu collapse' id='submenu-4'>
+                        <li class=' ' id='menuitem-attendance/report'>
+                            <a href='/attendance/report'>
+                                <i class='fa fa-file-text-o fa-fw'></i>
+                                Report
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-attendance/visitors'>
+                            <a href='/attendance/visitors'>
+                                <i class='fa fa-file-text-o fa-fw'></i>
+                                Visitors
+
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=' with-submenu' id='menuitem-email'>
+                    <a href='/email'>
+                        <i class='fa fa-envelope fa-fw'></i>
+                        Mailer
+
+                        <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-5'>
+                            <i class='fa fa-caret-down'></i>
+                            <i class='fa fa-caret-right'></i>
+                        </span>
+                    </a>
+                    <ul class='nav navbar-nav submenu collapse' id='submenu-5'>
+                        <li class=' ' id='menuitem-email/history'>
+                            <a href='/email/history'>
+                                <i class='fa fa-history fa-fw'></i>
+                                History
+
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=' with-submenu' id='menuitem-awards'>
+                    <a href='/awards'>
+                        <i class='fa fa-trophy fa-fw'></i>
+                        Badges
+
+                        <span class='sub-toggle collapsed' data-toggle='collapse' data-target='#submenu-6'>
+                            <i class='fa fa-caret-down'></i>
+                            <i class='fa fa-caret-right'></i>
+                        </span>
+                    </a>
+                    <ul class='nav navbar-nav submenu collapse' id='submenu-6'>
+                        <li class=' ' id='menuitem-awards/groups'>
+                            <a href='/awards/groups'>
+                                <i class='fa fa-sitemap fa-fw'></i>
+                                Badge Groups
+
+                            </a>
+                        </li>
+                        <li class=' ' id='menuitem-awards/report'>
+                            <a href='/awards/report'>
+                                <i class='fa fa-file-text-o fa-fw'></i>
+                                Report
+
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class=' ' id='menuitem-reports/GSNZ'>
+                    <a href='/reports/GSNZ'>
+                        <i class='fa fa-file-text-o fa-fw'></i>
+                        GSNZ Report
+
+                    </a>
+                </li>
+                <li class=' ' id='menuitem-programs'>
+                    <a href='/programs'>
+                        <i class='fa fa-rocket fa-fw'></i>
+                        Programmes
+
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-bottom">
+                <div class="refer-friend"></div>
+                &copy;Friendly Manager
+
+
+            </div>
+        </div>
+        <div class="container-fluid main-container">
+            <h2 class='visible-print-block' style='margin-top:0'>Term Fees</h2>
+            <i class="fa fa-question pull-right help-popover hidden-xs" title="Term Fees" data-content="&lt;p&gt;Term fees are like fee presets. As members are added to a class there will be a prompt to apply the relevant fee to them.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Pro Rata&lt;/b&gt; fees will apply a proportion of the total when registering part-way through the term.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Per Session&lt;/b&gt; fees will multiply the amount by the number of &lt;b&gt;Attendance&lt;/b&gt; events remaining in the term for that class. You must create the attendance events in advance for this to work.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Monthly&lt;/b&gt; fees will repeat every month for the duration of the term.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Nil&lt;/b&gt; fees are only useful when you need to provide an option for people to choose during signup but don't want to actually charge a fee.&lt;/p&gt;&lt;p&gt;&lt;b&gt;New Member&lt;/b&gt; fees are one-off joining fees applied only the first time a member registers with your club. Only the highest relevant fee will be applied.&lt;/p&gt;&lt;b&gt;Editing&lt;/b&gt; or &lt;b&gt;deleting&lt;/b&gt; term fees will &lt;b&gt;not&lt;/b&gt; affect any fees already applied." data-html="true"></i>
+            <form id="addFee" class="form-slide">
+                <div id="addTFeeSlide" class="collapse">
+                    <div class="form-group">
+                        <select class="form-control" name="termID" id="termSelect" required>
+                            <option selected disabled value="">New Term Fee &hellip;</option>
+                            <option value='4' data-start='2016-09-01' data-termset='0' data-copy='0' data-prev='' data-from=''>Term 1</option>
+                            <option value='5' data-start='2016-12-31' data-termset='0' data-copy='0' data-prev='4' data-from='Term 1'>Term 2</option>
+                            <option value='7' data-start='2017-01-01' data-termset='1' data-copy='0' data-prev='' data-from=''>Competitive</option>
+                            <option value='6' data-start='2017-07-16' data-termset='0' data-copy='0' data-prev='5' data-from='Term 2'>Term 3</option>
+                            <option disabled>&mdash;</option>
+                            <option value="null">New Member Fee</option>
+                        </select>
+                    </div>
+                    <div class="form-group show-concession" style="display:none">
+                        <input type="hidden" name="type" value="4" disabled>
+                        <input type="integer" id="clips" min="1" max="30" size="4" class="form-control" placeholder="Uses" required disabled>
+                        <input type="hidden" name="dueDate" class="clips-value" disabled>
+                    </div>
+                    <div class="form-group hide-join hide-concession">
+                        <select class="form-control selectheaders selectpicker" name="groupID[]" id="groupSelect" title="Select Classes&hellip;" required multiple>
+                            <optgroup label='Competitive' data-termset='0'>
+                                <option value='7' disabled>Level 1 - Thurs, Sat 4:00 - 5:00pm</option>
+                            </optgroup>
+                            <optgroup label='Junior Comp' data-termset='0'>
+                                <option value='6' disabled>Step 1 - Thursday 4 - 5pm</option>
+                                <option value='1' disabled>WAG - Step 3 - Thursday 4 - 6pm</option>
+                                <option value='2' disabled>WAG - Step 5 - Thursday 1 - 3pm</option>
+                                <option value='3' disabled>WAG - Step 8 - Wed, Sat 4 - 7pm</option>
+                            </optgroup>
+                            <optgroup label='Recreation' data-termset='0'>
+                                <option value='4' disabled>Tuesday - 5 - 6 Years  3:30pm</option>
+                                <option value='5' disabled>Tuesday - 7 - 8 Years  4:15pm</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group show-join" style="display:none">
+                        <input class="form-control" name="name" placeholder="Fee Name" required disabled>
+                    </div>
+                    <div class="form-group show-join " style="display:none">
+                        <select class="form-control" name="codeID[]" id="codeSelect" title="Select Codes&hellip;" required multiple>
+                            <option value='3'>Competitive</option>
+                            <option value='4'>default</option>
+                            <option value='1'>Junior Comp</option>
+                            <option value='2'>Recreation</option>
+                        </select>
+                        <input type="hidden" name="type" value="6">
+                    </div>
+                    <div class="form-group hide-join hide-concession">
+                        <select class="form-control" id="fee-type" name="type">
+                            <option value="0">Fixed Price</option>
+                            <option value="1">Pro Rata (by week)</option>
+                            <option value="5">Pro Rata (by month)</option>
+                            <option value="3">Per Session</option>
+                            <option value="2">Monthly</option>
+                            <option value="">Nil Fee</option>
+                        </select>
+                    </div>
+                    <div class="form-group input-group hide-monthly hide-nil hide-join hide-concession" data-toggle="tooltip" title="Due on the later of either the date or number of days after billing. Only one of these is required.">
+                        <input style="width:102px" class="form-control pick-date tfee-due" placeholder="Due date" data-requireone=".tfee-due" autocomplete="off">
+                        <input style="width:102px" type="date" class="form-control date-value tfee-due" name="dueDate" data-requireone=".tfee-due" placeholder="Due Date" autocomplete="off">
+                        <input style="width:56px" min="1" type="integer" class="form-control tfee-due" name="dueDays" placeholder="days" data-requireone=".tfee-due" autocomplete="off">
+                    </div>
+                    <div class="form-group show-monthly hide-nil hide-join hide-concession" style="display:none">
+                        <select class="form-control" name="dueDate" data-toggle="tooltip" title="Bill on this day of the month" disabled>
+                            <option value='2000-02-1'>1st</option>
+                            <option value='2000-02-2'>2nd</option>
+                            <option value='2000-02-3'>3rd</option>
+                            <option value='2000-02-4'>4th</option>
+                            <option value='2000-02-5'>5th</option>
+                            <option value='2000-02-6'>6th</option>
+                            <option value='2000-02-7'>7th</option>
+                            <option value='2000-02-8'>8th</option>
+                            <option value='2000-02-9'>9th</option>
+                            <option value='2000-02-10'>10th</option>
+                            <option value='2000-02-11'>11th</option>
+                            <option value='2000-02-12'>12th</option>
+                            <option value='2000-02-13'>13th</option>
+                            <option value='2000-02-14'>14th</option>
+                            <option value='2000-02-15'>15th</option>
+                            <option value='2000-02-16'>16th</option>
+                            <option value='2000-02-17'>17th</option>
+                            <option value='2000-02-18'>18th</option>
+                            <option value='2000-02-19'>19th</option>
+                            <option value='2000-02-20'>20th</option>
+                            <option value='2000-02-21'>21st</option>
+                            <option value='2000-02-22'>22nd</option>
+                            <option value='2000-02-23'>23rd</option>
+                            <option value='2000-02-24'>24th</option>
+                            <option value='2000-02-25'>25th</option>
+                            <option value='2000-02-26'>26th</option>
+                            <option value='2000-02-27'>27th</option>
+                            <option value='2000-02-28'>28th</option>
+                        </select>
+                    </div>
+                    <div class="form-group show-monthly show-join show-concession hide-nil" style="display:none">
+                        <input size="3" min="1" type="integer" class="form-control" name="dueDays" placeholder="Due" required data-toggle="tooltip" title="Due this many days after billing" autocomplete="off" disabled>
+                    </div>
+                    <div class="form-group hide-nil">
+                        <input size="8" type="real" min="1" fixed="2" class="form-control" name="amount" id="amount" placeholder="Amount" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success hidden-xs">
+                            <i class="fa fa-plus"></i>
+                            Add
+
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group visible-xs-block">
+                    <button type="submit" class="btn-success btn btn-block">
+                        <i class="fa fa-plus"></i>
+                        Add Term Fee
+
+                    </button>
+                </div>
+            </form>
+            <div class="btn-group filter-buttons filter-buttons-inline" data-toggle="buttons">
+                <label class="btn btn-default active">
+                    <input type="radio" name="tfees-filter" value="current" checked>Current
+
+
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="tfees-filter" value="all">All
+
+
+                </label>
+            </div>
+            <table class="table" id="termFeesTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Term</th>
+                        <th>Term &nbsp;Start</th>
+                        <th>Term &nbsp;End</th>
+                        <th style="width:10%">Due</th>
+                        <th style="width:8%">
+                            <span class="hidden-xs">Amount</span>
+                            <span class="visible-xs-inline">Amt.</span>
+                        </th>
+                        <th style="width:140px" class="min-md">Applied &nbsp;To</th>
+                        <th class="min"></th>
+                    </tr>
+                </thead>
+                <tbody class="edit-table"></tbody>
+            </table>
+            <script src="js/page/fees/term-fees.js?1055"></script>
+        </div>
+
+
+
+
+        <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <div class="help-widget">
+            <ul class="help-centre">
+                <li id="helpopen">
+                    <i class="fa fa-question-circle"></i>
+                </li>
+            </ul>
+            <ul class="help-options">
+              <li>
+                  <a href="help.html">
+                      <img src="">Help Centre
+                  </a>
+              </li>
+                <li data-toggle="modal" data-target="#quick-help">
+                      Quick Help
+                </li>
+                <!--
+                <li>
+                    <a href="" target="_blank">
+                        <img src="">FAQ Search
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="">Call
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="">Ticket
+                    </a>
+                </li>-->
+                <li>
+                    <a href="https://friendlymanager.com/">Chat
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="quick-help" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Quick Help</h4>
+        </div>
+        <div class="modal-body">
+          <div class="root-topic" id="help-22"><h2 class="bg-info text-primary"><i class="fa fa-calendar,usd"></i> Term Fees</h2><div>Every new term you will need to recreate the&nbsp;term&nbsp;fees for that&nbsp;term.</div><div>&nbsp;</div><div><span style="font-weight: 700;">There are five different price options :&nbsp;</span></div><div><ul><li><b>Fixed Price&nbsp;<br></b>Fixed term price for every member of the class it is applied to.</li><li><span style="font-weight: 700;">Pro Rata Monthly or Weekly</span>&nbsp;<br>A relative price applied to members joining part way through the term. Each week/month elapsed since the start of the term, the amount will reduce by a proportion according to the total number of weeks in the term (rounded up). <b>Note</b> - you must select 'By Week' or 'By Month' depending on your preferences.<br></li><li><b>Per Session</b>&nbsp;<br>A fee automatically calculated based on the remaining attendance sessions in that term. E.g: if the fee is $10 per session and there are 10 attendances remaining the customer will be charged $100.<br></li><li><span style="font-weight: 700;">Monthly</span>&nbsp;<br>A fee applied monthly. Members will be charged monthly the amount entered into the ‘Amount’ field.&nbsp;<br></li><li><b>Nil Fee <br></b>No fee.</li></ul></div><div class="sub-topic" id="help-24"><h3>Add a Term Fee</h3><ol><li>Hover on '<b>Fees</b>'. <br><img src="/images/system/help/menu_fees.png" class="helpimg-inline"></li><li>Click '<b>Term Fees</b>'. <br><img src="/images/system/help/menu_term_fees.png" class="helpimg-inline"></li><li>The top panel is where you create new term fees.<br><img src="/images/system/help/termfees_panel.png" class="helpimg-inline"><br></li><li>Select the term you want to apply the fee for. <br><img src="/images/system/help/termfee_term.png" class="helpimg-inline"></li><li>Select the classes you are applying the fee to. If the same fee applies to multiple classes <b>you can select as many as you like</b>. <img src="/images/system/help/termfee_groups.png" class="helpimg-right">&nbsp;&nbsp;<br><b>Note</b> - you may not be able to select some classes as you already have a term fee applied to them - you can only have one term fee per term per class.</li><li>If you have Xero enabled you may be asked to <b>choose your fee category</b>.&nbsp;<br></li><li>Choose a <b>fee price</b> option - Refer above for more.</li><li>Set the<b> due date</b> or days. <br><img src="/images/system/help/termfee_date.png" class="helpimg-inline"></li><li>Enter the <b>amount</b>.&nbsp; <br><img src="/images/system/help/termfee_amount.png" class="helpimg-inline"></li><li>Click '<b>Add</b>'. <br><img src="/images/system/help/termfee_add.png" class="helpimg-inline">. <br>If the the button is not clickable this means the data has not been filled in correctly. <br><img src="/images/system/help/termfee_disabled.png" class="helpimg-inline"><br></li><li>As you create term fees they will then appear in the table below.<br></li></ol><div><b>Note </b>- There may be different options based on the fee option you have selected.&nbsp;&nbsp;</div></div><div class="sub-topic" id="help-25"><h3>Apply a Term Fee</h3><div>Term fees can be applied in multiple ways.&nbsp;<br></div><div><br></div><div><b><i>Player Registering</i></b></div><div><div>The first way and the most common way a fee will be applied&nbsp;iswhen someone is registering for the term. As they go through the process and choose a class, the fee will be applied automatically.&nbsp;</div><div><br></div><div><b><i>Term fees page</i></b></div><div>The second way from the '<b>Term Fees</b>' page.</div><div><br></div><div><ol><li>Hover on '<b>Fees</b>'. <br><img src="/images/system/help/menu_fees.png" class="helpimg-inline"></li><li>Click '<b>Term Fees</b>'. <br><img src="/images/system/help/menu_term_fees.png" class="helpimg-inline"></li><li>Find the fee you want to apply.&nbsp;</li><li>Click '<b>Apply</b>'. <br><img src="/images/system/help/termfees_apply_btn.png" class="helpimg-inline"></li><li>You will be presented with a pop up which will list all people part of the&nbsp;class&nbsp;that have not received a fee yet.<br><img src="/images/system/help/termfees_apply_popup.png" class="helpimg-inline"></li><li>Simply go through the list and click the check boxes for the people that you want to apply the&nbsp;term&nbsp;fee to.</li><li>Click '<b>Apply</b>' - The fee has now been applied. <br><img src="/images/system/help/termfees_apply_popup_btn.png" class="helpimg-inline"></li></ol><div><b><i>Adding someone to a class</i></b></div><div>The third way that a&nbsp;term&nbsp;fee can be applied is when you're adding someone to a&nbsp;class&nbsp;that has a&nbsp;term&nbsp;fee applied to it. - <b><span><a href="#help-54" target="_blank">Click here</a></span> for more details.&nbsp;</b></div></div></div></div><div class="sub-topic" id="help-106"><h3>Apply a Monthly Term Fee</h3><ol><li>Hover on '<b>Fees</b>'.&nbsp;<br><img src="/images/system/help/menu_fees.png" class="helpimg-inline"></li><li>Click '<b>Term Fees</b>'.&nbsp;<br><img src="/images/system/help/menu_term_fees.png" class="helpimg-inline"></li><li>Find the fee you want to apply.&nbsp;</li><li>Click '<b>Apply</b>'.&nbsp;<br><img src="/images/system/help/termfees_apply_btn.png" class="helpimg-inline"></li><li>You will be presented with a pop up which will list all people part of the&nbsp;class&nbsp;that have not received a fee yet.<br><img src="/images/system/help/termfees_apply_popup.png" class="helpimg-inline"></li><li>Simply go through the list and <b>click the check boxes</b> for the people that you want to apply the&nbsp;term&nbsp;fee to.</li><li>Click '<b>Apply</b>' - The fee has now been applied.&nbsp;<br><img src="/images/system/help/termfees_apply_popup_btn.png" class="helpimg-inline"></li></ol><div><b>Note </b>- The monthly fee will be applied to the next recurring date set for that specific term fee. You cannot backdate when applying a monthly fee.&nbsp;</div></div><div class="sub-topic" id="help-107"><h3>Edit a Term Fee</h3><ol><li>Hover on '<b>Fees</b>'.&nbsp;<br><img src="/images/system/help/menu_fees.png" class="helpimg-inline"></li><li>Click '<b>Term Fees</b>'.&nbsp;<br><img src="/images/system/help/menu_term_fees.png" class="helpimg-inline"></li><li>Locate the&nbsp;term&nbsp;fee in the '<b>Term Fees</b>' table that you would like to edit.</li><li>Click the blue <b>edit icon</b> at the end of the row.</li><li>Edit the details.</li><li>Click the <b>green save icon</b>.</li></ol></div><div class="sub-topic" id="help-108"><h3>Edit a Monthly Term Fee for a Specific Member</h3><div>This editing process can be used for specific members and is helpful if you want to put a monthly fee on hold.</div><div><br></div><div><br></div><div><ol><li>Hover on '<b>Fees</b>'.&nbsp;<br><img src="/images/system/help/menu_fees.png" class="helpimg-inline"></li><li>Click '<b>Term Fees</b>'.&nbsp;<br><img src="/images/system/help/menu_term_fees.png" class="helpimg-inline"></li><li>Locate the fee in the '<b>Term Fees</b>' table that you would like to edit.</li><li>In the '<b>Applied To</b>' column next to the '<b>Apply</b>' button click '<b>people</b>'.&nbsp;<br><span style="font-weight: 700;">Note&nbsp;</span>- If the fee hasn't been applied to any members you will need to apply it first.</li><li>Find the specific member and in the '<b>Date</b>' column click the blue recurring symbol.</li><li>You can choose to change the '<b>Amount</b>', <b>'Next Date</b>' and '<b>End Date</b>' or click '<b>Stop Recur</b>' to stop the monthly fee for that individual.</li><li>Click '<b>Save</b>'.</li></ol></div></div><div class="sub-topic" id="help-26"><h3>Delete a Term Fee</h3><ol><li>Hover on '<b>Fees</b>'. <br><img src="/images/system/help/menu_fees.png" class="helpimg-inline"></li><li>Click '<b>Term Fees</b>'. <br><img src="/images/system/help/menu_term_fees.png" class="helpimg-inline"></li><li>Locate the&nbsp;term&nbsp;fee in the '<b>Term Fees</b>' table that you would like to delete.</li><li>Click the <b>delete icon</b> at the end of the row.&nbsp; &nbsp;<br><img src="/images/system/help/delete_icon.png" class="helpimg-inline"></li><li>A popup will appear.&nbsp;<br><img src="/images/system/help/delete_term_fee.png" class="helpimg-inline"></li><li>Click '<b>Delete</b>'.&nbsp;<br></li></ol><div><b>Note</b>&nbsp;- The fee will not be deleted off the account of members that have already had the fee applied to them.</div></div><div class="sub-topic" id="help-94"><h3>Term Fee Discount</h3>You have the option to create 'Registration Discounts'. These discounts will be applied when members register depending on the discount requirements you set.&nbsp;<div><br></div><div><b style="font-style: italic;">Registration discounts are organised in three ways</b></div><div><b><i><br></i></b><ul style=""><li style=""><b>Mode</b><br>You can choose if the discount percent is applied to each individual fee or the lowest fee amount.<br></li><li style=""><b style="">Number or Fees</b><br>A percentage discounted according to the number of different fees being applied in a single registration.</li><li style=""><b>Prompt Payment Discount</b><br>A prompt payment discount will be applied if the fee is paid in full before its due date.<br></li></ul><div><br></div></div><div><br><b style="font-style: italic;">Adding a 'Registration Discount' according to the number of fees</b></div><div><b><i><br></i></b><ol style=""><li style="">Hover on '<b>Fees</b>' and click '<b>Discounts</b>' on the control bar at the top.</li><li style="">Using the '<b>Mode</b>' dropdown choose how the discount will be applied.</li><li style="">Insert a minimum '<b>Number of Fees</b>' a registrar needs in order to get the discount.</li><li style="">Insert a number for the '<b>Discount</b>' percentage.</li><li style=""><b>Check or uncheck</b> the box to disable or enable the discount if a members fees are payed after the due date set on the term fee.<br></li><li style="">Click '<b>Save</b>'.</li></ol><div><br></div></div><div><b><i>Adding a 'Prompt Payment Discount'</i></b></div><div><b><i><br></i></b></div><div><ol><li>Hover on '<b>Fees</b>' and click '<b>Discounts</b>' on the control bar at the top.</li><li>Using the '<b>Mode</b>' dropdown choose how the discount will be applied.</li><li>Insert a number for the '<b>Discount</b>' percentage.</li><li><b>Check or uncheck</b> the box to disable or enable the discount if a members fees are payed after the due date set on the term fee.<br></li><li>Click '<b>Save</b>'.</li></ol><div><br></div></div></div><div class="sub-topic" id="help-244"><h3>Add a New Member Fee</h3><ol><li>Hover on '<b>Fees</b>'.&nbsp;<br><img src="/images/system/help/menu_fees.png" class="helpimg-inline"></li><li>Click '<b>Term Fees</b>'.&nbsp;<br><img src="/images/system/help/menu_term_fees.png" class="helpimg-inline"></li><li>The top panel is where you create new member fee.<br><img src="/images/system/help/termfees_panel.png" class="helpimg-inline"></li><li>Click the first drop box and at the bottom click '<b>New Member Fee</b>'.</li><li>Select the code you are applying the fee to. If the same fee applies to multiple codes you can select as many as you like.</li><li>If you have Xero enabled you may be asked to <b>choose your fee category</b>.</li><li>Set the <b>due date</b> or days.&nbsp;<br><img src="/images/system/help/termfee_date.png" class="helpimg-inline"></li><li>Enter the <b>amount</b>.&nbsp;&nbsp;<br><img src="/images/system/help/termfee_amount.png" class="helpimg-inline"></li><li>Click '<b>Add</b>'.&nbsp;<br><img src="/images/system/help/termfee_add.png" class="helpimg-inline">.&nbsp;<br>If the the button is not clickable this means the data has <b>not been filled in correctly</b>.&nbsp;<br><img src="/images/system/help/termfee_disabled.png" class="helpimg-inline"></li></ol></div></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="chat" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Quick Help</h4>
+      </div>
+      <div class="modal-body">
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+        <div class="footer container-fluid visible-xs-block">
+            <span>FM Support</span>
+            <a href="https://friendlymanager.com" class="friendly-manage pull-right">FriendlyManager</a>
+        </div>
+    </body>
+</html>
